@@ -8,6 +8,8 @@ import Second from './src/pages/Second';
 import Third from './src/pages/Third';
 import Four from './src/pages/Four';
 import Five from './src/pages/Five';
+import {Provider} from 'react-redux';
+import store from './src/store/index';
 
 export type LoggedInParamList = {
   First: undefined;
@@ -29,40 +31,42 @@ const Stack = createNativeStackNavigator<FourFive>();
 function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
   return (
-    <NavigationContainer>
-      {isLoggedIn ? (
-        <Tab.Navigator>
-          <Tab.Screen
-            name="First"
-            component={First}
-            options={{title: '오더 목록'}}
-          />
-          <Tab.Screen
-            name="Second"
-            component={Second}
-            options={{headerShown: false}}
-          />
-          <Tab.Screen
-            name="Third"
-            component={Third}
-            options={{title: '내 정보'}}
-          />
-        </Tab.Navigator>
-      ) : (
-        <Stack.Navigator>
-          <Stack.Screen
-            name="Four"
-            component={Four}
-            options={{title: '로그인'}}
-          />
-          <Stack.Screen
-            name="Five"
-            component={Five}
-            options={{title: '회원가입'}}
-          />
-        </Stack.Navigator>
-      )}
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        {isLoggedIn ? (
+          <Tab.Navigator>
+            <Tab.Screen
+              name="First"
+              component={First}
+              options={{title: '오더 목록'}}
+            />
+            <Tab.Screen
+              name="Second"
+              component={Second}
+              options={{headerShown: false}}
+            />
+            <Tab.Screen
+              name="Third"
+              component={Third}
+              options={{title: '내 정보'}}
+            />
+          </Tab.Navigator>
+        ) : (
+          <Stack.Navigator>
+            <Stack.Screen
+              name="Four"
+              component={Four}
+              options={{title: '로그인'}}
+            />
+            <Stack.Screen
+              name="Five"
+              component={Five}
+              options={{title: '회원가입'}}
+            />
+          </Stack.Navigator>
+        )}
+      </NavigationContainer>
+    </Provider>
   );
 }
 

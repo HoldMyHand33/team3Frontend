@@ -2,75 +2,36 @@ import React, {useCallback, useRef, useState} from 'react';
 import {View, Text, TextInput, Pressable, StyleSheet} from 'react-native';
 import {FourFive} from '../../App';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-
+import {useSelector} from 'react-redux';
+import {RootState} from '../store/reducer';
+import {useAppDispatch} from '../store';
+import exampleSlice from '../slices/example';
 // 이메일, 비밀번호를 둘다 입력해야 버튼 활성화
 // 스택 라우터
 type Fourtype = NativeStackScreenProps<FourFive, 'Four'>;
 function Four({navigation}: Fourtype) {
-  const [eamil, setEmail] = useState('');
-  const [pass, setPass] = useState('');
-  const eamilRef = useRef<TextInput | null>(null);
-  const passRef = useRef<TextInput | null>(null);
-  const changeEmail = useCallback((Text: string) => {
-    setEmail(Text);
-  }, []);
-  const changePass = useCallback((Text: string) => {
-    setPass(Text);
-  }, []);
-
-  const canGoNext = eamil && pass;
+  // state 가져오기
+  const email = useSelector((state: RootState) => state.exam.email);
+  const name = useSelector((state: RootState) => state.exam.name);
+  // state 변경
+  const dispatch = useAppDispatch();
   return (
     <>
       <View>
-        <Text>이메일</Text>
-        <TextInput
-          placeholder="이메일을 입력해주세요"
-          placeholderTextColor="#666"
-          // 이메일 자동 완성
-          importantForAutofill="yes"
-          autoComplete="email"
-          textContentType="emailAddress"
-          //키패드 바꾸기
-          returnKeyType="next"
-          clearButtonMode="while-editing"
-          //키보드를 내리지 않겠다는 옵션임
-          blurOnSubmit={false}
-          value={eamil}
-          onChangeText={changeEmail}
-          ref={eamilRef}
-          //엔터 눌렀을때 포커징 패쓰워드 인풋으로 옮겨라
-          onSubmitEditing={() => {
-            passRef.current?.focus();
-          }}
-        />
-      </View>
-      <View>
-        <Text>비밀번호</Text>
-        <TextInput
-          placeholder="비밀번호를 입력해주세요(영문,숫자,특수문자)"
-          placeholderTextColor="#666"
-          //패쓰워드 자동 완성
-          importantForAutofill="yes"
-          autoComplete="password"
-          textContentType="password"
-          secureTextEntry
-          returnKeyType="send"
-          clearButtonMode="while-editing"
-          value={pass}
-          onChangeText={changePass}
-          //ref 연결
-          ref={passRef}
-        />
-      </View>
-      <View>
+        <Text>{email}</Text>
+        <Text>{name}</Text>
         <Pressable
-          style={
-            canGoNext
-              ? [styles.loginButton, styles.loginButtonActive]
-              : styles.loginButton
-          }
-          disabled={!canGoNext}
-        />
+          style={{backgroundColor: 'blue'}}
+          onPress={() => {
+            dispatch(
+              exampleSlice.actions.setUser({
+                email: '변경',
+                name: '변경',
+              }),
+            );
+          }}>
+          <Text>버튼</Text>
+        </Pressable>
       </View>
     </>
   );
