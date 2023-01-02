@@ -23,8 +23,11 @@ export type FourFive = {
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator<FourFive>();
 
+// Four에서 처음 시작 함
+// Four에서 처음 시작 함
+// Four에서 처음 시작 함
 function App() {
-  const [isLoggedIn, setLoggedIn] = useState(true);
+  const [isLoggedIn, setLoggedIn] = useState(false);
   return (
     <NavigationContainer>
       {isLoggedIn ? (
