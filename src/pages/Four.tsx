@@ -32,12 +32,25 @@ function Four({navigation}: Fourtype) {
   // 주의!!! {item} 객체 안의 item으로 사용해야함!!
   const renderItem = useCallback(({item}: {item: iOrder}) => {
     return (
-      <View key={item.orderId}>
-        <Text>{item.name}</Text>
-        <Text>{item.example}</Text>
-      </View>
+      <>
+        <EachOrder item={item} />
+      </>
     );
   }, []);
+
+  interface Props {
+    item: iOrder;
+  }
+  function EachOrder({item}: Props) {
+    return (
+      <View key={item.orderId}>
+        <Text>{item.orderId}</Text>
+        <Text>{item.example}</Text>
+        <Text>{item.name}</Text>
+      </View>
+    );
+  }
+
   return (
     <>
       <View>
@@ -45,7 +58,7 @@ function Four({navigation}: Fourtype) {
           //실제 데이터(data : 보여줄 배열목록)
           data={orders}
           //keyExtractor : 배열 하나씩의 id 값
-          //keyExtractor={item => item.orderId} 인덱스 계산해주기!!왜 에러
+          //keyExtractor={index => index.orderId}
           //랜더링 할거
           //renderItem : map 함수 부분이라고 생각하면 됨 랜더링 할 거
           renderItem={renderItem}
