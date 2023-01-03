@@ -1,12 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {
-  View,
-  Text,
-  Alert,
-  Pressable,
-  StyleSheet,
-  ActivityIndicator,
-} from 'react-native';
+import {View, FlatList, Text} from 'react-native';
 import {FourFive} from '../../App';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {useSelector} from 'react-redux';
@@ -18,54 +11,48 @@ import {useAppDispatch} from '../store';
 // 스택 라우터
 type Fourtype = NativeStackScreenProps<FourFive, 'Four'>;
 function Four({navigation}: Fourtype) {
-  //로딩 창
-  const [isLaoding, setIsLoading] = useState(false);
-  //dispatch 가져오기
-  const dispatch = useAppDispatch();
-  // state 가져오기
-  const email = useSelector((state: RootState) => state.exam.email);
-  useEffect(() => {
-    async function getMoney() {
-      //get으로 받아오는 타입은 알수 없기 때문에 get옆에 무슨 타입이 오는지 명시 해줘야 한다.
-      //axios.get<{data: number}> get으로 받아오는 타입은
-      //response.data.data 숫자 타입 :: data 숫자 타입
-      const response = await axios.get<{data: number}>(`/showmethemoney`, {
-        headers: {authorization: `Bearer ${email}`},
-      });
-      dispatch(exampleSlice.actions.setUser(response.data.data));
-    }
-    getMoney();
-  }, [dispatch]);
+  const [orders, setOder] = useState([
+    {
+      name: 'ㄱㅈㅎ',
+      example: 'ㄱㄴㄷ',
+      orderId: 1,
+    },
+    {
+      name: 'ㅇㅎㄹ',
+      example: 'ㅇㅎㄹ',
+      orderId: 2,
+    },
+  ]);
+
+  interface iOrder {
+    name: string;
+    example: string;
+    orderId: number;
+  }
+  // 주의!!! {item} 객체 안의 item으로 사용해야함!!
+  const renderItem = useCallback(({item}: {item: iOrder}) => {
+    return (
+      <View key={item.orderId}>
+        <Text>{item.name}</Text>
+        <Text>{item.example}</Text>
+      </View>
+    );
+  }, []);
   return (
     <>
       <View>
-        {/*axios 통신 중일 때는 뺑글뺑글돌아가는 버튼 생김*/}
-        {isLaoding ? (
-          <ActivityIndicator color="blue" />
-        ) : (
-          <Pressable
-            style={{backgroundColor: 'blue'}}
-            //axios 통신 중일 때 버튼을 여러번 눌러 요청 할 수 없도록 disabled를 적용한다.
-            disabled={isLaoding}>
-            <Text>버튼</Text>
-          </Pressable>
-        )}
+        <FlatList
+          //실제 데이터(data : 보여줄 배열목록)
+          data={orders}
+          //keyExtractor : 배열 하나씩의 id 값
+          //keyExtractor={item => item.orderId} 인덱스 계산해주기!!왜 에러
+          //랜더링 할거
+          //renderItem : map 함수 부분이라고 생각하면 됨 랜더링 할 거
+          renderItem={renderItem}
+        />
       </View>
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  loginButton: {
-    backgroundColor: 'gray',
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    borderRadius: 5,
-    marginBottom: 10,
-  },
-  loginButtonActive: {
-    backgroundColor: 'blue',
-  },
-});
 
 export default Four;
