@@ -1,5 +1,5 @@
-# axios 설명
+# axios get
 
-Four.tsx 참고
-
-- ActivityIndicator : 통신 중일 때 버튼 뺑글뺑글 돌아가는 버튼
+- axios로 받아오는 타입을 명시 해줘야 한다.
+- axios.get<{data:number}>
+- Four.tsx 참조
