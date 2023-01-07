@@ -28,7 +28,6 @@ export type RootTabParamList = {
 export type RootStackParamList = {
   InitialScreen: {setLogin: Dispatch<SetStateAction<boolean>>};
   SignupScreen: undefined;
-  마이페이지: undefined;
 };
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
