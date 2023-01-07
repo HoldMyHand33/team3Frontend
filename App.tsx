@@ -9,11 +9,11 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import Exchange from './src/screen/Exchange';
 import Home from './src/screen/Home';
 import InitialScreen from './src/screen/InitialScreen';
 import SignupScreen from './src/screen/SignupScreen';
-import Exchange from './src/screen/Exchange';
-
+import {getToken} from './src/util/asyncStorage';
 
 export type RootTabParamList = {
   홈: undefined;
@@ -31,6 +31,15 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      const token = await getToken();
+      if (token) {
+        setIsLoggedIn(true);
+      }
+    })();
+  }, []);
 
   return (
     <NavigationContainer>
@@ -99,7 +108,6 @@ export default function App() {
   );
 }
 
-
 function Two() {
   return (
     <View>
@@ -107,4 +115,3 @@ function Two() {
     </View>
   );
 }
-
