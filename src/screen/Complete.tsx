@@ -1,9 +1,22 @@
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import * as React from 'react';
-import {View, Text, Dimensions, StyleSheet, Pressable} from 'react-native';
+import {
+  Dimensions,
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+
+import {RootStackParamList} from '../../App';
 
 const appWidth = Dimensions.get('window').width * 0.8;
+type NavigationProps = NativeStackNavigationProp<RootStackParamList>;
 
 function Complete() {
+  const navigation = useNavigation<NavigationProps>();
   return (
     <>
       <View style={styles.screen}>
@@ -13,9 +26,9 @@ function Complete() {
               alignItems: 'center',
               marginBottom: 25,
             }}>
-            {/* <Image source={require('./src/assets/image/one.jpg')} /> */}
+            <Image source={require('../assets/pngs/Complete_java.png')} />
           </View>
-          {/* <Image source={require('./src/assets/image/two.jpg')} /> */}
+          <Image source={require('../assets/pngs/Complete_hand.png')} />
         </View>
         <View style={{flex: 2}}>
           <Text style={styles.WelcomeText}>회원가입을 환영합니다.</Text>
@@ -26,7 +39,11 @@ function Complete() {
             <Text>소중한 사람과의 인연을 높치지 마세요.</Text>
           </View>
         </View>
-        <Pressable style={styles.ButtonStyle}>
+        <Pressable
+          style={styles.ButtonStyle}
+          onPress={() =>
+            navigation.navigate('InitialScreen', {setLogin: undefined})
+          }>
           <Text style={{color: 'white'}}>내손을 잡아 시작하기</Text>
         </Pressable>
       </View>
@@ -36,26 +53,26 @@ function Complete() {
 
 const styles = StyleSheet.create({
   ButtonStyle: {
+    alignItems: 'center',
+    backgroundColor: '#FF4D4D',
     borderRadius: 5,
-    width: appWidth,
     height: 45,
     justifyContent: 'center',
-    alignItems: 'center',
     marginBottom: 20,
-    backgroundColor: '#FF4D4D',
+    width: appWidth,
   },
   WelcomeText: {
-    fontWeight: '900',
     fontSize: 20,
-  },
-  screen: {
-    alignItems: 'center',
-    flex: 1,
-    backgroundColor: 'white',
+    fontWeight: '900',
   },
   imageView: {
     flex: 4,
     justifyContent: 'center',
+  },
+  screen: {
+    alignItems: 'center',
+    backgroundColor: 'white',
+    flex: 1,
   },
 });
 

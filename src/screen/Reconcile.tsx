@@ -1,13 +1,14 @@
 import * as React from 'react';
-import {useState, useCallback} from 'react';
+import {useCallback, useState} from 'react';
 import {
+  Dimensions,
+  Image,
+  Pressable,
+  StyleSheet,
   Text,
   View,
-  Image,
-  StyleSheet,
-  Pressable,
-  Dimensions,
 } from 'react-native';
+
 export default function JoinForm() {
   const [parents, setParents] = useState(false);
   const [parent2, setParents2] = useState(false);
@@ -30,11 +31,11 @@ export default function JoinForm() {
               justifyContent: 'space-between',
               marginTop: 10,
             }}>
-            {/* <Image source={require('./Group98.jpg')} /> */}
+            <Image source={require('../assets/pngs/Reconcile_rava.png')} />
             <View style={{flexDirection: 'row'}}>
-              {/* <Image source={require('./bell.jpg')} style={{width: 18}} /> */}
+              <Image source={require('../assets/pngs/Reconcile_bell.png')} />
               <Image
-                // source={require('./circle.jpg')}
+                source={require('../assets/pngs/Reconcile_circle.png')}
                 style={{marginLeft: 15, width: 18, marginRight: 10}}
               />
             </View>
@@ -219,83 +220,83 @@ export default function JoinForm() {
 }
 const styles = StyleSheet.create({
   Onbutton: {
+    alignItems: 'center',
+    backgroundColor: '#FF9090',
+    borderColor: 'gray',
     borderRadius: 5,
+    elevation: 8,
+    height: 25,
+    justifyContent: 'center',
+    marginBottom: 20,
+    shadowColor: '#000',
     width: 80,
-    height: 25,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 20,
-    backgroundColor: '#FF9090',
-    shadowColor: '#000',
-    elevation: 8,
-    borderColor: 'gray',
-  },
-  buttonTwo: {
-    borderRadius: 5,
-    width: 180,
-    height: 25,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 20,
-    backgroundColor: 'white',
-    borderColor: 'gray',
-    shadowColor: '#000',
-    elevation: 8,
-  },
-  buttonTwo2: {
-    borderRadius: 5,
-    width: 180,
-    height: 25,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 20,
-    backgroundColor: '#FF9090',
-    borderColor: 'gray',
-    shadowColor: '#000',
-    elevation: 8,
-  },
-  buttons: {
-    marginLeft: 10,
-    borderRadius: 5,
-    width: 55,
-    height: 25,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 20,
-    backgroundColor: 'white',
-    borderColor: 'gray',
-    shadowColor: '#000',
-    elevation: 8,
   },
   button: {
-    marginLeft: 10,
-    borderRadius: 5,
-    width: 55,
-    height: 25,
-    color: 'white',
-    justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 20,
     backgroundColor: '#FF9090',
     borderColor: 'gray',
-    shadowColor: '#000',
-    elevation: 8,
-  },
-  text: {
+    borderRadius: 5,
     color: 'white',
+    elevation: 8,
+    height: 25,
+    justifyContent: 'center',
+    marginBottom: 20,
+    marginLeft: 10,
+    shadowColor: '#000',
+    width: 55,
+  },
+  buttonTwo: {
+    alignItems: 'center',
+    backgroundColor: 'white',
+    borderColor: 'gray',
+    borderRadius: 5,
+    elevation: 8,
+    height: 25,
+    justifyContent: 'center',
+    marginBottom: 20,
+    shadowColor: '#000',
+    width: 180,
+  },
+  buttonTwo2: {
+    alignItems: 'center',
+    backgroundColor: '#FF9090',
+    borderColor: 'gray',
+    borderRadius: 5,
+    elevation: 8,
+    height: 25,
+    justifyContent: 'center',
+    marginBottom: 20,
+    shadowColor: '#000',
+    width: 180,
+  },
+  buttons: {
+    alignItems: 'center',
+    backgroundColor: 'white',
+    borderColor: 'gray',
+    borderRadius: 5,
+    elevation: 8,
+    height: 25,
+    justifyContent: 'center',
+    marginBottom: 20,
+    marginLeft: 10,
+    shadowColor: '#000',
+    width: 55,
   },
   ontext: {
     color: 'black',
   },
   ontext2: {
-    marginTop: 10,
     color: 'black',
+    marginTop: 10,
+  },
+  text: {
+    color: 'white',
   },
   tsex: {
+    alignItems: 'center',
     backgroundColor: 'white',
     borderColor: 'gray',
-    width: 80,
-    alignItems: 'center',
     marginRight: 10,
+    width: 80,
   },
 });

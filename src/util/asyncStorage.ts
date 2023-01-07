@@ -26,3 +26,14 @@ export const getToken = async () => {
     console.log(error);
   }
 };
+
+export const removeToken = async () => {
+  try {
+    await AsyncStorage.removeItem('token');
+  } catch (error) {
+    if (error instanceof Error) {
+      console.log(error.message);
+    }
+    console.log(error);
+  }
+};

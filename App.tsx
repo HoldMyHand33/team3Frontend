@@ -9,21 +9,30 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import {Heart} from './src/assets/svgs';
+import Complete from './src/screen/Complete';
+import Exchange from './src/screen/Exchange';
 import Home from './src/screen/Home';
 import InitialScreen from './src/screen/InitialScreen';
+import MyScreen from './src/screen/MyScreen';
+import JoinForm from './src/screen/Reconcile';
+// import JoinForm from './src/screen/Reconcile';
 import SignupScreen from './src/screen/SignupScreen';
-import Exchange from './src/screen/Exchange';
-
+import SignupScreen2 from './src/screen/SignupScreen2';
+import {getToken} from './src/util/asyncStorage';
 
 export type RootTabParamList = {
   홈: undefined;
   화해하자: undefined;
   교환하자: undefined;
+  마이페이지: undefined;
 };
 
 export type RootStackParamList = {
-  InitialScreen: {setLogin: Dispatch<SetStateAction<boolean>>};
+  InitialScreen: {setLogin: Dispatch<SetStateAction<boolean>> | undefined};
   SignupScreen: undefined;
+  SignupScreen2: undefined;
+  Complete: undefined;
 };
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
@@ -31,6 +40,15 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      const token = await getToken();
+      if (token) {
+        setIsLoggedIn(true);
+      }
+    })();
+  }, []);
 
   return (
     <NavigationContainer>
@@ -55,7 +73,7 @@ export default function App() {
             />
             <Tab.Screen
               name="화해하자"
-              component={Two}
+              component={JoinForm}
               options={{
                 headerShown: false,
                 tabBarIcon: ({color}) => (
@@ -81,6 +99,15 @@ export default function App() {
                 unmountOnBlur: true,
               }}
             />
+            <Tab.Screen
+              name="마이페이지"
+              component={() => MyScreen({setIsLoggedIn})}
+              options={{
+                headerShown: false,
+                tabBarStyle: {display: 'none'},
+                tabBarIcon: ({color}) => <Heart stroke={color} />,
+              }}
+            />
           </Tab.Navigator>
         ) : (
           <Stack.Navigator
@@ -92,13 +119,14 @@ export default function App() {
             />
 
             <Stack.Screen name="SignupScreen" component={SignupScreen} />
+            <Stack.Screen name="SignupScreen2" component={SignupScreen2} />
+            <Stack.Screen name="Complete" component={Complete} />
           </Stack.Navigator>
         )}
       </SafeAreaProvider>
     </NavigationContainer>
   );
 }
-
 
 function Two() {
   return (
@@ -107,4 +135,3 @@ function Two() {
     </View>
   );
 }
-
