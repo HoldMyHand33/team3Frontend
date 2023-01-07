@@ -8,10 +8,11 @@ import {
   ViewStyle,
 } from 'react-native';
 import Colors from '../../../constants/Colors';
+import {Dispatch, SetStateAction} from 'react';
 
 interface Props {
   text: string;
-  onPress?: () => void;
+  onPress?: Dispatch<SetStateAction<boolean>>;
   textStyle?: StyleProp<TextStyle>;
   containerStyle?: StyleProp<ViewStyle>;
 }
@@ -19,7 +20,7 @@ interface Props {
 const SquareButton = ({text, textStyle, containerStyle, onPress}: Props) => {
   return (
     <Pressable
-      onPress={onPress}
+      onPress={() => onPress && onPress(true)}
       style={({pressed}) => [
         styles.container,
         containerStyle,
