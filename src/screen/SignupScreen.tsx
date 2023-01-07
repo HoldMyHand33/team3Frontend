@@ -242,8 +242,6 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 30,
     paddingTop: 0,
-
-    // backgroundColor: '#d6ca1a',
   },
 
   footer: {

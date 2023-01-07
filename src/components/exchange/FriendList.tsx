@@ -1,91 +1,99 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Alert, Pressable, StyleSheet, Text, View, Image } from 'react-native';
 
-const FriendList = () => {
-    const [date, setDate] = useState(0);
-    const [dateContent, setDateContent] = useState([
-        '사이가 멀어진 당시에 어떤 상황이었나요?', 
-        '사이가 멀어졌을 때 자신의 감정은 어땠나요?',
-        '상대방과 멀어진 이유가 뭐라고 생각하시나요?',
-        '멀어진 이후에 어떤 생각을 했고, 무슨 감정이 들었나요?',
-        '화해해야겠다고 다짐한 이유가 무엇인가요?',
-        '상대방과 화해한 지금 어떤 생각이 드시나요?',
-        '앞으로의 다짐 및 서로와의 약속을 적어주세요.',
-    ]);
+const FriendList = ({ setTF }: any) => {
+    const [myCode, setMyCode] = useState("k3du10");
 
   return (
       <>
-        <View style={stylesContent1.title}>
-            <Text style={stylesContent1.text}>교환 일기</Text>
-            <Text style={stylesContent1.delete}>그만쓰기</Text>
-        </View>
+        <Text style={stylesContent1.text}>친구 목록</Text>
         <View style={stylesContent1.box}>
-            <Text style={stylesContent1.text2}>아크와 나누는 첫 번째 교환 일기 질문이 도착했어요.</Text>
-            <Text style={stylesContent1.text2}>오늘 24시 전까지 답장해주세요.</Text>
+            <View style={stylesContent1.box2}>
+                <Image source={require('../../assets/pngs/home_heart.png')} />
+                <Text style={stylesContent2.text}>지미</Text>
+                <Text style={stylesContent2.button}>신청하기</Text>
+            </View>
+            <View style={stylesContent1.box2}>
+                <Image source={require('../../assets/pngs/home_heart.png')} />
+                <Text style={stylesContent2.text}>지미</Text>
+                <Text 
+                  style={[stylesContent2.button, stylesContent2.button2]}
+                  onPress={()=>{ setTF(false) }}>
+                    수락하기
+                </Text>
+            </View>
         </View>
-        <Text style={stylesContent1.text3}>아크와 교환 일기 {date+1}일차</Text>
-        {dateContent.map((data, idx)=>{
-            return (
-                (date<idx?
-                    <></>:
-                    <Text style={stylesContent1.text4}>
-                        {idx+1}일차&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <Text style={stylesContent1.text5}>{data}</Text>
-                    </Text>
-                )
-            );
-        })}
+        <View style={stylesContent1.bottom}>
+            <Text style={stylesContent1.text}>
+                나의 코드 {myCode}&nbsp;&nbsp;&nbsp;&nbsp;
+                <Text style={stylesContent1.copy}>복사하기</Text>
+            </Text>
+            <Text style={stylesContent1.button}>친구 추가하기</Text>
+        </View>
       </>
   );
 };
 
 const stylesContent1 = StyleSheet.create({
-    title: {
-        flexDirection: 'row',
-        justifyContent: "space-between",
-    },
-    delete: {
-        color: '#364356',
-        fontSize: 11,
-    },
-
   content: {
     position: 'relative',
   },
   text: {
-    color: '#000',
     marginBottom: 15,
     fontSize: 13,
     fontWeight: '400',
   },
   text2: {
-    color: '#fff',
-    fontSize: 12,
+    marginBottom: 52,
+    fontSize: 11,
+    fontWeight: '400',
   },
-  text3: {
-    marginBottom: 30,
-    color: '#000',
-    textAlign: 'center',
-    fontSize: 14,
-  },
-  text4: {
-    color: '#FF9090',
-  },
-  text5: {
-    color: '#000',
-    fontSize: 12,
+
+  img: {
+    width: '100%',
+    marginBottom: 25,
   },
 
   box: {
     width: '100%',
-    height: 60,
-    marginBottom: 40,
-    paddingTop: 14,
+    height: 200,
+    marginBottom: 37,
+    padding: 18,
+    paddingLeft: 25,
+    paddingRight: 25,
 
-    alignItems: 'center',
+    color: '#fff',
+    shadowColor: '#000',
+    elevation: 8,
 
     borderRadius: 7,
-    backgroundColor: '#FF9090',
+    backgroundColor: '#fff',
+  },
+  box2: {
+    marginBottom: 12,
+    flexDirection: 'row',
+    justifyContent: "space-between",
+  },
+
+  bottom: {
+    flexDirection: 'row',
+    justifyContent: "space-between",
+  },
+  copy: {
+    color: '#FF4D4D',
+  },
+
+  button: {
+    width: 90,
+    height: 25,
+    lineHeight: 23,
+
+    fontSize: 12,
+    color: '#fff',
+    textAlign: "center",
+
+    borderRadius: 5,
+    backgroundColor: '#FF4D4D',
   },
 })
 
@@ -94,6 +102,10 @@ const stylesContent2 = StyleSheet.create({
       width: '60%',
       lineHeight: 30,
       fontSize: 12,
+    },
+
+    button2: {
+      backgroundColor: '#FF4D4D',
     },
     button: {
         width: 65,
