@@ -12,7 +12,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Home from './src/screen/Home';
 import InitialScreen from './src/screen/InitialScreen';
 import SignupScreen from './src/screen/SignupScreen';
-import Home from './src/screen/Home';
 import Exchange from './src/screen/Exchange';
 
 
