@@ -3,15 +3,17 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import * as React from 'react';
 import {Dispatch, SetStateAction, useEffect, useState} from 'react';
-import {Text, View} from 'react-native';
+import {StyleProp, Text, View} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import {Heart} from './src/assets/svgs';
 import Exchange from './src/screen/Exchange';
 import Home from './src/screen/Home';
 import InitialScreen from './src/screen/InitialScreen';
+import MyScreen from './src/screen/MyScreen';
 import SignupScreen from './src/screen/SignupScreen';
 import {getToken} from './src/util/asyncStorage';
 
@@ -19,6 +21,7 @@ export type RootTabParamList = {
   홈: undefined;
   화해하자: undefined;
   교환하자: undefined;
+  마이페이지: undefined;
 };
 
 export type RootStackParamList = {
@@ -88,6 +91,14 @@ export default function App() {
                 ),
                 tabBarActiveTintColor: '#FF4D4D',
                 unmountOnBlur: true,
+              }}
+            />
+            <Tab.Screen
+              name="마이페이지"
+              component={MyScreen}
+              options={{
+                headerShown: false,
+                tabBarIcon: ({color}) => <Heart stroke={color} />,
               }}
             />
           </Tab.Navigator>
