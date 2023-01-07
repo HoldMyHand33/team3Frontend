@@ -11,6 +11,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import InitialScreen from './src/screen/InitialScreen';
 import SignupScreen from './src/screen/SignupScreen';
 import Home from './src/screen/Home';
+import Exchange from './src/screen/Exchange';
 
 export type BottomNav = {
   홈: undefined;
@@ -67,7 +68,7 @@ export default function App() {
             />
             <Tab.Screen
               name="교환하자"
-              component={Three}
+              component={Exchange}
               options={{
                 headerShown: false,
                 tabBarIcon: ({color}) => (
@@ -88,15 +89,6 @@ export default function App() {
         )}
       </SafeAreaProvider>
     </NavigationContainer>
-  );
-}
-
-
-function One() {
-  return (
-    <View>
-      <Text>One</Text>
-    </View>
   );
 }
 
