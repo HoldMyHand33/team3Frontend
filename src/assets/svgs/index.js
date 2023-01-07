@@ -1,6 +1,7 @@
 export {default as ArrowLeft} from './arrowLeft.svg';
 export {default as Bell} from './bell.svg';
 export {default as HandShake} from './handShake.svg';
+export {default as Heart2} from './heart-outline.svg';
 export {default as Heart} from './heart-solid.svg';
 export {default as LogoImage} from './logoImage.svg';
 export {default as LogoText} from './logoText.svg';

@@ -9,7 +9,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import {Heart} from './src/assets/svgs';
+import {Heart, Heart2} from './src/assets/svgs';
 import Complete from './src/screen/Complete';
 import Exchange from './src/screen/Exchange';
 import Home from './src/screen/Home';
@@ -106,7 +106,7 @@ export default function App() {
               options={{
                 headerShown: false,
                 tabBarStyle: {display: 'none'},
-                tabBarIcon: ({color}) => <Heart stroke={color} />,
+                tabBarIcon: ({color}) => <Heart2 style={{color: 'grey'}} />,
               }}
             />
           </Tab.Navigator>
