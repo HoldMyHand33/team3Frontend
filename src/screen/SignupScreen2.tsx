@@ -1,3 +1,5 @@
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import axios, {AxiosError} from 'axios';
 import * as React from 'react';
 import {useCallback, useState} from 'react';
@@ -14,9 +16,13 @@ import {
   View,
 } from 'react-native';
 
+import {RootStackParamList} from '../../App';
+
+type NavigationProps = NativeStackNavigationProp<RootStackParamList>;
 const appWidth = Dimensions.get('window').width;
 const height = Dimensions.get('window').height * 0.55;
 export default function Join() {
+  const navigation = useNavigation<NavigationProps>();
   const [next, setNext] = useState(false);
   // 이름
   const [name, setName] = useState('');
@@ -64,8 +70,8 @@ export default function Join() {
         <KeyboardAvoidingView
           style={{flex: 1, marginBottom: 50, alignItems: 'center'}}>
           <View style={styles.IamgeView}>
-            <Image source={require('./Group98.jpg')} />
-            <Image source={require('./x.jpg')} />
+            <Image source={require('../assets/pngs/join_java.png')} />
+            <Image source={require('../assets/pngs/join_x.png')} />
           </View>
           <View
             style={{
@@ -84,7 +90,7 @@ export default function Join() {
               }}>
               회원가입
             </Text>
-            <Image source={require('./Stage.jpg')} />
+            <Image source={require('../assets/pngs/join_x.png')} />
           </View>
           <View style={{height: height * 0.3}}>
             <View style={styles.TextView}>
@@ -118,7 +124,7 @@ export default function Join() {
                         email: email,
                       },
                     );
-                    if (!response.data.data) {
+                    if (response.data.data) {
                       Alert.alert('아이디 중복', '아이디가 중복 되었습니다.');
                     } else {
                       setNext(true);
@@ -235,6 +241,7 @@ export default function Join() {
                       phoneNum: phone,
                     },
                   );
+                  navigation.navigate('Complete');
                 } else {
                   Alert.alert('이메일', '이메일 중복확인을 해주세요');
                 }

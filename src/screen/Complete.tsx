@@ -1,9 +1,22 @@
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import * as React from 'react';
-import {Dimensions, Pressable, StyleSheet, Text, View} from 'react-native';
+import {
+  Dimensions,
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+
+import {RootStackParamList} from '../../App';
 
 const appWidth = Dimensions.get('window').width * 0.8;
+type NavigationProps = NativeStackNavigationProp<RootStackParamList>;
 
 function Complete() {
+  const navigation = useNavigation<NavigationProps>();
   return (
     <>
       <View style={styles.screen}>
@@ -13,9 +26,9 @@ function Complete() {
               alignItems: 'center',
               marginBottom: 25,
             }}>
-            {/* <Image source={require('./src/assets/image/one.jpg')} /> */}
+            <Image source={require('../assets/pngs/Complete_java.png')} />
           </View>
-          {/* <Image source={require('./src/assets/image/two.jpg')} /> */}
+          <Image source={require('../assets/pngs/Complete_hand.png')} />
         </View>
         <View style={{flex: 2}}>
           <Text style={styles.WelcomeText}>회원가입을 환영합니다.</Text>

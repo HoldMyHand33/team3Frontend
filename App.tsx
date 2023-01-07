@@ -10,12 +10,15 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {Heart} from './src/assets/svgs';
+import Complete from './src/screen/Complete';
 import Exchange from './src/screen/Exchange';
 import Home from './src/screen/Home';
 import InitialScreen from './src/screen/InitialScreen';
 import MyScreen from './src/screen/MyScreen';
 import JoinForm from './src/screen/Reconcile';
+// import JoinForm from './src/screen/Reconcile';
 import SignupScreen from './src/screen/SignupScreen';
+import SignupScreen2 from './src/screen/SignupScreen2';
 import {getToken} from './src/util/asyncStorage';
 
 export type RootTabParamList = {
@@ -28,6 +31,8 @@ export type RootTabParamList = {
 export type RootStackParamList = {
   InitialScreen: {setLogin: Dispatch<SetStateAction<boolean>>};
   SignupScreen: undefined;
+  SignupScreen2: undefined;
+  Complete: undefined;
 };
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
@@ -114,6 +119,8 @@ export default function App() {
             />
 
             <Stack.Screen name="SignupScreen" component={SignupScreen} />
+            <Stack.Screen name="SignupScreen2" component={SignupScreen2} />
+            <Stack.Screen name="Complete" component={Complete} />
           </Stack.Navigator>
         )}
       </SafeAreaProvider>
