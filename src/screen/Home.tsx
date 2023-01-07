@@ -7,6 +7,9 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {Mail, Quote, Quote2} from '../assets/svgs';
 import Colors from '../constants/Colors';
 
+import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
 const Home = () => {
   return (
     <SafeAreaView style={styles.screen}>
@@ -16,8 +19,8 @@ const Home = () => {
           <Text style={{fontSize: 22, fontWeight: '900'}}>자바</Text>
         </Text>
         <View style={styles.headerright}>
-          <Text>알람</Text>
-          <Text>마이</Text>
+          <EvilIcons name="bell" size={30} style={{ marginRight: 7, }}/>
+          <FontAwesome name="user-circle" size={22}/>
         </View>
       </View>
       <Text style={styles.text2}>화해할 결심</Text>

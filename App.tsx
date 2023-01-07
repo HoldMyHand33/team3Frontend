@@ -106,7 +106,9 @@ export default function App() {
               options={{
                 headerShown: false,
                 tabBarStyle: {display: 'none'},
-                tabBarIcon: ({color}) => <Heart2 style={{color: 'grey'}} />,
+                tabBarIcon: ({color}) => (
+                  <FontAwesome name="user-circle" size={20} />
+                ),
               }}
             />
           </Tab.Navigator>

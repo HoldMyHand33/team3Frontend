@@ -6,6 +6,9 @@ import Daily2 from "../components/exchange/Daily2";
 import DailyList from "../components/exchange/DailyList";
 import FriendList from "../components/exchange/FriendList";
 
+import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
 const Exchange = () => {
     const [myCode, setMyCode] = useState("k3du10");
     const [tf, setTF] = useState(true);
@@ -31,8 +34,8 @@ const Exchange = () => {
             <Text style={{ fontSize: 22, fontWeight: '900', }}>자바</Text>
         </Text>
         <View style={styles.headerright}>
-            <Text>알람</Text>
-            <Text>마이</Text>
+          <EvilIcons name="bell" size={30} style={{ marginRight: 7, }}/>
+          <FontAwesome name="user-circle" size={22}/>
         </View>
       </View>
       {tf2?

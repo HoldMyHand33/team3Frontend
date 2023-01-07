@@ -20,6 +20,9 @@ import SquareButton from '../../components/common/UI/SquareButton';
 import Colors from '../../constants/Colors';
 import {removeToken} from '../../util/asyncStorage';
 
+import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
 type Props = BottomTabScreenProps<RootTabParamList, '마이페이지'>;
 
 const MyScreen = ({setIsLoggedIn}: any) => {
@@ -31,16 +34,21 @@ const MyScreen = ({setIsLoggedIn}: any) => {
   return (
     <SafeAreaView style={styles.screen}>
       <View style={styles.header}>
-        <LogoTextSecond />
-        <View style={styles.iconContainer}>
-          <Bell style={{marginRight: 15}} />
-          <Person />
+        <Text style={styles.title}>
+            내 손을&nbsp;
+            <Text style={{ fontSize: 22, fontWeight: '900', }}>자바</Text>
+        </Text>
+        <View style={styles.headerright}>
+          <EvilIcons name="bell" size={30} style={{ marginRight: 7, }}/>
+          <FontAwesome name="user-circle" size={22} color={'#FF4D4D'}/>
         </View>
       </View>
+
       <Pressable style={styles.backButton} onPress={() => navigate.goBack()}>
         <ArrowLeft style={{marginRight: 17}} />
         <Text>마이페이지</Text>
       </Pressable>
+
       <View style={styles.card}>
         <HandShake />
         <View>
@@ -72,6 +80,24 @@ const MyScreen = ({setIsLoggedIn}: any) => {
 };
 
 const styles = StyleSheet.create({
+  header: {
+    width:'100%',
+    padding: 6,
+    paddingTop: 9,
+    paddingBottom: 20,
+
+    flexDirection: 'row',
+    justifyContent: "space-between",
+  },
+  headerright: {
+    flexDirection: 'row',
+    justifyContent: "space-between",
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: '400',
+  },
+
   backButton: {
     alignItems: 'center',
     alignSelf: 'flex-start',
@@ -97,12 +123,12 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     paddingHorizontal: 20,
   },
-  header: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 18,
-  },
+  // header: {
+  //   alignItems: 'center',
+  //   flexDirection: 'row',
+  //   justifyContent: 'space-between',
+  //   marginBottom: 18,
+  // },
   iconContainer: {alignItems: 'center', flexDirection: 'row'},
   screen: {
     alignSelf: 'stretch',
