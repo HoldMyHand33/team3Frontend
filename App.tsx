@@ -1,17 +1,20 @@
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import * as React from 'react';
 import {useState} from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {NavigationContainer} from '@react-navigation/native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Entypo from 'react-native-vector-icons/Entypo';
 import {Text, View} from 'react-native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import Entypo from 'react-native-vector-icons/Entypo';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
+import Home from './src/screen/Home';
 import InitialScreen from './src/screen/InitialScreen';
 import SignupScreen from './src/screen/SignupScreen';
 import Home from './src/screen/Home';
 import Exchange from './src/screen/Exchange';
+
 
 export type BottomNav = {
   홈: undefined;
@@ -92,6 +95,7 @@ export default function App() {
   );
 }
 
+
 function Two() {
   return (
     <View>
@@ -100,10 +104,3 @@ function Two() {
   );
 }
 
-function Three() {
-  return (
-    <View>
-      <Text>Three</Text>
-    </View>
-  );
-}
