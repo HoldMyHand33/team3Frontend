@@ -4,6 +4,9 @@ import {Alert, Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
+import {Mail, Quote, Quote2} from '../assets/svgs';
+import Colors from '../constants/Colors';
+
 const Home = () => {
   return (
     <SafeAreaView style={styles.screen}>
@@ -17,21 +20,16 @@ const Home = () => {
           <Text>마이</Text>
         </View>
       </View>
+      <Text style={styles.text2}>화해할 결심</Text>
+      <Pressable>
+        <View style={styles.card}>
+          <Quote style={{marginBottom: 16}} />
+          <Mail style={{marginBottom: 16}} />
+          <Quote2 />
+        </View>
+      </Pressable>
       <View style={styles.content}>
         <View>
-          <View style={stylesContent1.content}>
-            <Text style={stylesContent1.text}>화해할 결심</Text>
-            <Image
-              style={stylesContent1.img}
-              source={require('../assets/pngs/home_letter.png')}
-            />
-
-            <Text style={stylesContent1.text2}>
-              아직 화해를 결심하지 않았어요.
-            </Text>
-            <Text style={stylesContent1.text3}>화해 결심하러 가기</Text>
-          </View>
-
           <Text style={stylesContent1.text}>화해 Tip</Text>
           <Text style={stylesContent2.text}>
             내 잘못으로 친구가 화가 났을 때
@@ -113,14 +111,25 @@ const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
     backgroundColor: '#FF4D4D',
-
     borderRadius: 7,
     height: 45,
-
     justifyContent: 'center',
     width: '100%',
   },
-
+  card: {
+    alignItems: 'center',
+    alignSelf: 'stretch',
+    backgroundColor: Colors.WHITE,
+    borderRadius: 10,
+    flexDirection: 'column',
+    height: 140,
+    justifyContent: 'center',
+    marginBottom: 43,
+    marginHorizontal: 15,
+    shadowColor: Colors.BLACK,
+    shadowOffset: {width: 0, height: 8},
+    shadowOpacity: 1,
+  },
   content: {
     flex: 1,
     padding: 15,
@@ -139,7 +148,6 @@ const styles = StyleSheet.create({
     padding: 21,
     width: '100%',
   },
-
   headerright: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -150,10 +158,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#F4F5F9',
     flex: 1,
   },
+
   text: {
     color: 'white',
     fontSize: 16,
   },
+  text2: {color: Colors.BLACK, marginBottom: 15, marginLeft: 15},
   title: {
     fontSize: 18,
     fontWeight: '400',

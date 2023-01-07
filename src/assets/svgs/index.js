@@ -5,5 +5,8 @@ export {default as Heart} from './heart-solid.svg';
 export {default as LogoImage} from './logoImage.svg';
 export {default as LogoText} from './logoText.svg';
 export {default as LogoTextSecond} from './logoTextSecond.svg';
+export {default as Mail} from './mail.svg';
 export {default as Person} from './person.svg';
+export {default as Quote} from './quote.svg';
+export {default as Quote2} from './quote2.svg';
 export {default as Setting} from './settings.svg';
