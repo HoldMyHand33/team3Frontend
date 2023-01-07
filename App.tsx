@@ -101,7 +101,8 @@ export default function App() {
             />
             <Tab.Screen
               name="마이페이지"
-              component={() => MyScreen({setIsLoggedIn})}
+              // component={() => MyScreen({setIsLoggedIn})}
+              children={() => <MyScreen setIsLoggedIn={setIsLoggedIn} />}
               options={{
                 headerShown: false,
                 tabBarStyle: {display: 'none'},
@@ -115,7 +116,7 @@ export default function App() {
             screenOptions={{headerShown: false}}>
             <Stack.Screen
               name="InitialScreen"
-              component={() => InitialScreen({setIsLoggedIn})}
+              children={() => <InitialScreen setIsLoggedIn={setIsLoggedIn} />}
             />
 
             <Stack.Screen name="SignupScreen" component={SignupScreen} />
