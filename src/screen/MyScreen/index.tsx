@@ -20,6 +20,9 @@ import SquareButton from '../../components/common/UI/SquareButton';
 import Colors from '../../constants/Colors';
 import {removeToken} from '../../util/asyncStorage';
 
+import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
 type Props = BottomTabScreenProps<RootTabParamList, '마이페이지'>;
 
 const MyScreen = ({setIsLoggedIn}: any) => {
@@ -33,13 +36,14 @@ const MyScreen = ({setIsLoggedIn}: any) => {
       <View style={styles.header}>
         <LogoTextSecond />
         <View style={styles.iconContainer}>
-          <Bell style={{marginRight: 15}} />
-          <Person />
+          <EvilIcons name="bell" size={30} style={{ marginRight: 7, }}/>
+          <FontAwesome name="user-circle" size={22} color={'#FF4D4D'}/>
         </View>
       </View>
       <Pressable style={styles.backButton} onPress={() => navigate.goBack()}>
         <ArrowLeft style={{marginRight: 17}} />
         <Text>마이페이지</Text>
+
       </Pressable>
       <View style={styles.card}>
         <HandShake />
