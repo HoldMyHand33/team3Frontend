@@ -8,6 +8,8 @@ import {
   Text,
   View,
 } from 'react-native';
+import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export default function JoinForm() {
   const [parents, setParents] = useState(false);
@@ -17,30 +19,24 @@ export default function JoinForm() {
   const height = Dimensions.get('window').height;
   return (
     <View style={{flex: 1, backgroundColor: '#F4F5F9'}}>
+      <View style={styles.header}>
+        <Text style={styles.title}>
+            내 손을&nbsp;
+            <Text style={{ fontSize: 22, fontWeight: '900', }}>자바</Text>
+        </Text>
+        <View style={styles.headerright}>
+          <EvilIcons name="bell" size={30} style={{ marginRight: 7, }}/>
+          <FontAwesome name="user-circle" size={22}/>
+        </View>
+      </View>
       <View
         style={{
-          flex: 1,
-          marginTop: 25,
+          // flex: 1,
+          // marginTop: 20,
           marginLeft: 15,
+          marginRight: 15,
         }}>
         {/**/}
-        <View>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              marginTop: 10,
-            }}>
-            <Image source={require('../assets/pngs/Reconcile_rava.png')} />
-            <View style={{flexDirection: 'row'}}>
-              <Image source={require('../assets/pngs/Reconcile_bell.png')} />
-              <Image
-                source={require('../assets/pngs/Reconcile_circle.png')}
-                style={{marginLeft: 15, width: 18, marginRight: 10}}
-              />
-            </View>
-          </View>
-        </View>
         {/**/}
         <View style={{marginTop: 15, height: height * 0.1}}>
           <Text
@@ -219,6 +215,22 @@ export default function JoinForm() {
   );
 }
 const styles = StyleSheet.create({
+  header: {
+    width:'100%',
+    padding: 21,
+
+    flexDirection: 'row',
+    justifyContent: "space-between",
+  },
+  headerright: {
+    flexDirection: 'row',
+    justifyContent: "space-between",
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: '400',
+  },
+
   Onbutton: {
     alignItems: 'center',
     backgroundColor: '#FF9090',
