@@ -14,6 +14,7 @@ import Exchange from './src/screen/Exchange';
 import Home from './src/screen/Home';
 import InitialScreen from './src/screen/InitialScreen';
 import MyScreen from './src/screen/MyScreen';
+import JoinForm from './src/screen/Reconcile';
 import SignupScreen from './src/screen/SignupScreen';
 import {getToken} from './src/util/asyncStorage';
 
@@ -27,6 +28,7 @@ export type RootTabParamList = {
 export type RootStackParamList = {
   InitialScreen: {setLogin: Dispatch<SetStateAction<boolean>>};
   SignupScreen: undefined;
+  마이페이지: undefined;
 };
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
@@ -65,9 +67,9 @@ export default function App() {
                 unmountOnBlur: true,
               }}
             />
-            <Tab.Screen
+            {/* <Tab.Screen
               name="화해하자"
-              component={Two}
+              component={JoinForm}
               options={{
                 headerShown: false,
                 tabBarIcon: ({color}) => (
@@ -80,7 +82,7 @@ export default function App() {
                 tabBarActiveTintColor: '#FF4D4D',
                 unmountOnBlur: true,
               }}
-            />
+            /> */}
             <Tab.Screen
               name="교환하자"
               component={Exchange}
@@ -98,6 +100,7 @@ export default function App() {
               component={() => MyScreen({setIsLoggedIn})}
               options={{
                 headerShown: false,
+                tabBarStyle: {display: 'none'},
                 tabBarIcon: ({color}) => <Heart stroke={color} />,
               }}
             />
