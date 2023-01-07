@@ -5,4 +5,5 @@ export default {
   BLACK: '#000000',
   DIVIDER: '#364356',
   BORDER_COLOR: '#A0A0A0',
+  BACKGROUND: '#F4F5F9',
 };

@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import * as React from 'react';
 import {Dispatch, SetStateAction, useEffect, useState} from 'react';
-import {StyleProp, Text, View} from 'react-native';
+import {Text, View} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -95,7 +95,7 @@ export default function App() {
             />
             <Tab.Screen
               name="마이페이지"
-              component={MyScreen}
+              component={() => MyScreen({setIsLoggedIn})}
               options={{
                 headerShown: false,
                 tabBarIcon: ({color}) => <Heart stroke={color} />,
