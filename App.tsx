@@ -66,7 +66,7 @@ export default function App() {
                 unmountOnBlur: true,
               }}
             />
-            {/* <Tab.Screen
+            <Tab.Screen
               name="화해하자"
               component={JoinForm}
               options={{
@@ -81,7 +81,7 @@ export default function App() {
                 tabBarActiveTintColor: '#FF4D4D',
                 unmountOnBlur: true,
               }}
-            /> */}
+            />
             <Tab.Screen
               name="교환하자"
               component={Exchange}
