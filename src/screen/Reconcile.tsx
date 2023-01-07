@@ -30,11 +30,11 @@ export default function JoinForm() {
               justifyContent: 'space-between',
               marginTop: 10,
             }}>
-            <Image source={require('./Group98.jpg')} />
+            {/* <Image source={require('./Group98.jpg')} /> */}
             <View style={{flexDirection: 'row'}}>
-              <Image source={require('./bell.jpg')} style={{width: 18}} />
+              {/* <Image source={require('./bell.jpg')} style={{width: 18}} /> */}
               <Image
-                source={require('./circle.jpg')}
+                // source={require('./circle.jpg')}
                 style={{marginLeft: 15, width: 18, marginRight: 10}}
               />
             </View>
