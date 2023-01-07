@@ -26,7 +26,7 @@ export default {
 
   login(email: string, password: string): AxiosPromise<loginResponse> {
     return Axios({
-      url: '/api/members',
+      url: '/api/members/login',
       method: 'post',
       data: {
         email,
@@ -36,7 +36,7 @@ export default {
   },
   signUp(email: string, password: string): AxiosPromise<signUpResponse> {
     return Axios({
-      url: '/api/members',
+      url: '/api/members/signup',
       method: 'post',
       data: {
         email,

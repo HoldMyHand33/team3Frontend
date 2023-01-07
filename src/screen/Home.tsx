@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Alert, Pressable, StyleSheet, Text, View, Image} from 'react-native';
+import {Alert, Image, Pressable, StyleSheet, Text, View} from 'react-native';
 // import { CheckBoxBase } from "@react-native-community/checkbox";
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -110,26 +110,15 @@ const Home = () => {
 };
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    alignSelf: 'stretch',
-    backgroundColor: '#F4F5F9',
-  },
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#FF4D4D',
 
-  header: {
+    borderRadius: 7,
+    height: 45,
+
+    justifyContent: 'center',
     width: '100%',
-    padding: 21,
-
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  headerright: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  title: {
-    fontSize: 18,
-    fontWeight: '400',
   },
 
   content: {
@@ -137,114 +126,125 @@ const styles = StyleSheet.create({
     padding: 15,
     paddingTop: 0,
   },
-
   footer: {
-    flex: 1,
-
-    flexDirection: 'row',
     alignItems: 'flex-end',
+
+    flex: 1,
+    flexDirection: 'row',
   },
-  button: {
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+
+    padding: 21,
     width: '100%',
-    height: 45,
+  },
 
-    justifyContent: 'center',
-    alignItems: 'center',
+  headerright: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
 
-    borderRadius: 7,
-    backgroundColor: '#FF4D4D',
+  screen: {
+    alignSelf: 'stretch',
+    backgroundColor: '#F4F5F9',
+    flex: 1,
   },
   text: {
     color: 'white',
     fontSize: 16,
   },
+  title: {
+    fontSize: 18,
+    fontWeight: '400',
+  },
 });
 
 const stylesContent1 = StyleSheet.create({
-  content: {
-    position: 'relative',
-  },
-  text2: {
-    position: 'absolute',
-    alignSelf: 'center',
-    marginTop: 70,
-    fontSize: 11,
-    fontWeight: '400',
-  },
-  text3: {
-    position: 'absolute',
-    alignSelf: 'center',
-    marginTop: 170,
-
-    color: '#FF4D4D',
-    fontSize: 11,
-    fontWeight: '400',
-  },
-
-  text: {
-    marginBottom: 15,
-    fontSize: 13,
-    fontWeight: '900',
-  },
-  img: {
-    width: '100%',
-    marginBottom: 25,
-  },
-
   box: {
-    width: 41.54,
+    backgroundColor: '#364356',
+    borderRadius: 7,
+    color: '#fff',
+
+    fontSize: 12,
     height: 23.7,
     lineHeight: 22,
 
-    color: '#fff',
-    fontSize: 12,
     textAlign: 'center',
+    width: 41.54,
+  },
+  content: {
+    position: 'relative',
+  },
+  img: {
+    marginBottom: 25,
+    width: '100%',
+  },
 
-    borderRadius: 7,
-    backgroundColor: '#364356',
+  text: {
+    fontSize: 13,
+    fontWeight: '900',
+    marginBottom: 15,
+  },
+  text2: {
+    alignSelf: 'center',
+    fontSize: 11,
+    fontWeight: '400',
+    marginTop: 70,
+    position: 'absolute',
+  },
+
+  text3: {
+    alignSelf: 'center',
+    color: '#FF4D4D',
+    fontSize: 11,
+
+    fontWeight: '400',
+    marginTop: 170,
+    position: 'absolute',
   },
 });
 
 const stylesContent2 = StyleSheet.create({
+  box: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
+
+    elevation: 8,
+
+    height: 140,
+    marginBottom: 20,
+    overflow: 'hidden',
+
+    shadowColor: '#000',
+  },
+  boxinner: {
+    flexDirection: 'row',
+    height: 70,
+  },
+  boxleft: {
+    alignItems: 'center',
+
+    justifyContent: 'center',
+    width: '17%',
+  },
+
+  boxright: {
+    justifyContent: 'center',
+    padding: 5,
+
+    width: '83%',
+    // alignItems: "center",
+  },
   text: {
-    marginBottom: 10,
     fontSize: 12,
+    marginBottom: 10,
   },
   text2: {
     fontSize: 10,
   },
   text3: {
     fontSize: 9,
-  },
-
-  box: {
-    height: 140,
-    marginBottom: 20,
-
-    overflow: 'hidden',
-
-    borderRadius: 10,
-    shadowColor: '#000',
-    elevation: 8,
-
-    backgroundColor: '#fff',
-  },
-  boxinner: {
-    height: 70,
-    flexDirection: 'row',
-  },
-  boxleft: {
-    width: '17%',
-
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  boxright: {
-    width: '83%',
-    padding: 5,
-
-    justifyContent: 'center',
-    // alignItems: "center",
   },
 });
 

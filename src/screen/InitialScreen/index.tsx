@@ -1,21 +1,21 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import React, {Dispatch, useState} from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+
 import {RootStackParamList} from '../../../App';
-import Colors from '../../constants/Colors';
 import {LogoImage, LogoText} from '../../assets/svgs';
 import SquareButton from '../../components/common/UI/SquareButton';
-import FindMyButton from './components/FindMyButton';
+import Colors from '../../constants/Colors';
 import Divider from './components/Divider';
-import {useState} from 'react';
+import FindMyButton from './components/FindMyButton';
 import Modal from './components/Modal';
 
-export type LoginScreenProps = NativeStackScreenProps<
-  RootStackParamList,
-  'InitialScreen'
->;
+interface Props {
+  setIsLoggedIn: Dispatch<React.SetStateAction<boolean>>;
+}
 
-const InitialScreen = () => {
+const InitialScreen = ({setIsLoggedIn}: any) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <>
@@ -30,6 +30,12 @@ const InitialScreen = () => {
           />
           <FindMyButton />
         </View>
+        <Text
+          onPress={() => {
+            setIsLoggedIn(true);
+          }}>
+          test
+        </Text>
         <View style={{alignSelf: 'stretch', alignItems: 'center'}}>
           <Divider text="간편 로그인" />
           <SquareButton
@@ -39,20 +45,22 @@ const InitialScreen = () => {
           />
         </View>
       </SafeAreaProvider>
-      {isModalOpen && <Modal handleClose={setIsModalOpen} />}
+      {isModalOpen && (
+        <Modal handleClose={setIsModalOpen} setIsLoggedIn={setIsLoggedIn} />
+      )}
     </>
   );
 };
 
 const styles = StyleSheet.create({
   screen: {
-    flex: 1,
-    paddingVertical: 74,
+    alignItems: 'center',
     alignSelf: 'stretch',
     backgroundColor: Colors.WHITE,
-    alignItems: 'center',
-    paddingHorizontal: 30,
+    flex: 1,
     justifyContent: 'space-around',
+    paddingHorizontal: 30,
+    paddingVertical: 74,
   },
 });
 

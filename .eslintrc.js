@@ -31,6 +31,7 @@ module.exports = {
     'import/no-duplicates': 'error',
     '@typescript-eslint/no-unused-vars': 0,
     'react-native/no-unused-styles': 0,
+    'react-native/no-inline-styles': 0,
     semi: [2, 'always'],
     quotes: [2, 'single', {avoidEscape: true}],
     'prettier/prettier': 2,

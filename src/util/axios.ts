@@ -13,10 +13,6 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
-    const accessToken = localStorage.getItem('token');
-    if (config.headers) {
-      config.headers.authorization = `${accessToken}`;
-    }
     return config;
   },
   (error: AxiosError) => {

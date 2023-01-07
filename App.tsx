@@ -2,7 +2,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import * as React from 'react';
-import {useState} from 'react';
+import {Dispatch, SetStateAction, useEffect, useState} from 'react';
 import {Text, View} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -13,22 +13,23 @@ import Home from './src/screen/Home';
 import InitialScreen from './src/screen/InitialScreen';
 import SignupScreen from './src/screen/SignupScreen';
 
-export type BottomNav = {
+export type RootTabParamList = {
   홈: undefined;
   화해하자: undefined;
   교환하자: undefined;
 };
 
 export type RootStackParamList = {
-  InitialScreen: undefined;
+  InitialScreen: {setLogin: Dispatch<SetStateAction<boolean>>};
   SignupScreen: undefined;
 };
 
-const Tab = createBottomTabNavigator<BottomNav>();
+const Tab = createBottomTabNavigator<RootTabParamList>();
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
     <NavigationContainer>
       <SafeAreaProvider>
@@ -81,9 +82,13 @@ export default function App() {
           </Tab.Navigator>
         ) : (
           <Stack.Navigator
-            initialRouteName="SignupScreen"
+            initialRouteName="InitialScreen"
             screenOptions={{headerShown: false}}>
-            <Stack.Screen name="InitialScreen" component={InitialScreen} />
+            <Stack.Screen
+              name="InitialScreen"
+              component={() => InitialScreen({setIsLoggedIn})}
+            />
+
             <Stack.Screen name="SignupScreen" component={SignupScreen} />
           </Stack.Navigator>
         )}
