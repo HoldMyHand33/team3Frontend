@@ -1,7 +1,13 @@
+import {
+  BottomTabBarProps,
+  BottomTabScreenProps,
+} from '@react-navigation/bottom-tabs';
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {useNavigation} from '@react-navigation/native';
+
+import {RootTabParamList} from '../../../App';
 import {
   ArrowLeft,
   Bell,
@@ -13,11 +19,6 @@ import {
 import SquareButton from '../../components/common/UI/SquareButton';
 import Colors from '../../constants/Colors';
 import {removeToken} from '../../util/asyncStorage';
-import {
-  BottomTabBarProps,
-  BottomTabScreenProps,
-} from '@react-navigation/bottom-tabs';
-import {RootTabParamList} from '../../../App';
 
 type Props = BottomTabScreenProps<RootTabParamList, '마이페이지'>;
 

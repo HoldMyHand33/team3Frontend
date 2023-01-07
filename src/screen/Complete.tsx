@@ -39,7 +39,11 @@ function Complete() {
             <Text>소중한 사람과의 인연을 높치지 마세요.</Text>
           </View>
         </View>
-        <Pressable style={styles.ButtonStyle}>
+        <Pressable
+          style={styles.ButtonStyle}
+          onPress={() =>
+            navigation.navigate('InitialScreen', {setLogin: undefined})
+          }>
           <Text style={{color: 'white'}}>내손을 잡아 시작하기</Text>
         </Pressable>
       </View>

@@ -90,7 +90,7 @@ export default function Join() {
               }}>
               회원가입
             </Text>
-            <Image source={require('../assets/pngs/join_x.png')} />
+            <Image source={require('../assets/pngs/Stage.png')} />
           </View>
           <View style={{height: height * 0.3}}>
             <View style={styles.TextView}>

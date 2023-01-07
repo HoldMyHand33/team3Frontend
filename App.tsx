@@ -29,7 +29,7 @@ export type RootTabParamList = {
 };
 
 export type RootStackParamList = {
-  InitialScreen: {setLogin: Dispatch<SetStateAction<boolean>>};
+  InitialScreen: {setLogin: Dispatch<SetStateAction<boolean>> | undefined};
   SignupScreen: undefined;
   SignupScreen2: undefined;
   Complete: undefined;
