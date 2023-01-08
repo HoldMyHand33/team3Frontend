@@ -3,110 +3,118 @@ import {Alert, Image, Pressable, StyleSheet, Text, View} from 'react-native';
 // import { CheckBoxBase } from "@react-native-community/checkbox";
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import {SafeAreaView} from 'react-native-safe-area-context';
-
-import {Mail, Quote, Quote2} from '../assets/svgs';
-import Colors from '../constants/Colors';
-
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
+import {Mail, Quote, Quote2} from '../assets/svgs';
+import Modal from '../components/HomeScreen/modal';
+import Colors from '../constants/Colors';
+
 const Home = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
-    <SafeAreaView style={styles.screen}>
-      <View style={styles.header}>
-        <Text style={styles.title}>
-          내 손을&nbsp;
-          <Text style={{fontSize: 22, fontWeight: '900', fontFamily: '210namuR', }}>자바</Text>
-        </Text>
-        <View style={styles.headerright}>
-          <EvilIcons name="bell" size={30} style={{ marginRight: 7, }}/>
-          <FontAwesome name="user-circle" size={22}/>
-        </View>
-      </View>
-      <Text style={styles.text2}>화해할 결심</Text>
-      <Pressable>
-        <View style={styles.card}>
-          <Quote style={{marginBottom: 16}} />
-          <Mail style={{marginBottom: 16}} />
-          <Quote2 />
-        </View>
-      </Pressable>
-      <View style={styles.content}>
-        <View>
-          <Text style={stylesContent1.text}>화해 Tip</Text>
-          <Text style={stylesContent2.text}>
-            내 잘못으로 친구가 화가 났을 때
+    <>
+      <SafeAreaView style={styles.screen}>
+        <View style={styles.header}>
+          <Text style={styles.title}>
+            내 손을&nbsp;
+            <Text style={{fontSize: 22, fontWeight: '900'}}>자바</Text>
           </Text>
-          <View style={stylesContent2.box}>
-            <View style={stylesContent2.boxinner}>
-              <View style={stylesContent2.boxleft}>
-                <Image source={require('../assets/pngs/home_heart.png')} />
-                <Text style={stylesContent2.text2}>현</Text>
+          <View style={styles.headerright}>
+            <EvilIcons name="bell" size={30} style={{marginRight: 7}} />
+            <FontAwesome name="user-circle" size={22} />
+          </View>
+        </View>
+        <Text style={styles.text2}>화해할 결심</Text>
+        <Pressable
+          onPress={() => {
+            setIsModalOpen(true);
+          }}>
+          <View style={styles.card}>
+            <Quote style={{marginBottom: 16}} />
+            <Mail style={{marginBottom: 16}} />
+            <Quote2 />
+          </View>
+        </Pressable>
+        <View style={styles.content}>
+          <View>
+            <Text style={stylesContent1.text}>화해 Tip</Text>
+            <Text style={stylesContent2.text}>
+              내 잘못으로 친구가 화가 났을 때
+            </Text>
+            <View style={stylesContent2.box}>
+              <View style={stylesContent2.boxinner}>
+                <View style={stylesContent2.boxleft}>
+                  <Image source={require('../assets/pngs/home_heart.png')} />
+                  <Text style={stylesContent2.text2}>현</Text>
+                </View>
+                <View style={stylesContent2.boxright}>
+                  <Text style={stylesContent2.text2}>
+                    지각이 잦은 나, 오늘도 늦었다면?
+                  </Text>
+                  <Text style={stylesContent2.text3}>
+                    콘텐츠 내용의 일부입니다. 사용자들의 관심을 유도하기 위해
+                    내용의 일부를 노출합니다.
+                  </Text>
+                </View>
               </View>
-              <View style={stylesContent2.boxright}>
-                <Text style={stylesContent2.text2}>
-                  지각이 잦은 나, 오늘도 늦었다면?
-                </Text>
-                <Text style={stylesContent2.text3}>
-                  콘텐츠 내용의 일부입니다. 사용자들의 관심을 유도하기 위해
-                  내용의 일부를 노출합니다.
-                </Text>
+              <View style={stylesContent2.boxinner}>
+                <View style={stylesContent2.boxleft}>
+                  <Image source={require('../assets/pngs/home_heart.png')} />
+                  <Text style={stylesContent2.text2}>제이</Text>
+                </View>
+                <View style={stylesContent2.boxright}>
+                  <Text style={stylesContent2.text2}>
+                    친구한테 빌린 태블릿을 떨어뜨렸다...
+                  </Text>
+                  <Text style={stylesContent2.text3}>
+                    콘텐츠 내용의 일부입니다. 사용자들의 관심을 유도하기 위해
+                    내용의 일부를 노출합니다.
+                  </Text>
+                </View>
               </View>
             </View>
-            <View style={stylesContent2.boxinner}>
-              <View style={stylesContent2.boxleft}>
-                <Image source={require('../assets/pngs/home_heart.png')} />
-                <Text style={stylesContent2.text2}>제이</Text>
+            <Text style={stylesContent2.text}>
+              내 잘못으로 친구가 화가 났을 때
+            </Text>
+            <View style={stylesContent2.box}>
+              <View style={stylesContent2.boxinner}>
+                <View style={stylesContent2.boxleft}>
+                  <Image source={require('../assets/pngs/home_heart.png')} />
+                  <Text style={stylesContent2.text2}>현</Text>
+                </View>
+                <View style={stylesContent2.boxright}>
+                  <Text style={stylesContent2.text2}>
+                    지각이 잦은 나, 오늘도 늦었다면?
+                  </Text>
+                  <Text style={stylesContent2.text3}>
+                    콘텐츠 내용의 일부입니다. 사용자들의 관심을 유도하기 위해
+                    내용의 일부를 노출합니다.
+                  </Text>
+                </View>
               </View>
-              <View style={stylesContent2.boxright}>
-                <Text style={stylesContent2.text2}>
-                  친구한테 빌린 태블릿을 떨어뜨렸다...
-                </Text>
-                <Text style={stylesContent2.text3}>
-                  콘텐츠 내용의 일부입니다. 사용자들의 관심을 유도하기 위해
-                  내용의 일부를 노출합니다.
-                </Text>
+              <View style={stylesContent2.boxinner}>
+                <View style={stylesContent2.boxleft}>
+                  <Image source={require('../assets/pngs/home_heart.png')} />
+                  <Text style={stylesContent2.text2}>제이</Text>
+                </View>
+                <View style={stylesContent2.boxright}>
+                  <Text style={stylesContent2.text2}>
+                    친구한테 빌린 태블릿을 떨어뜨렸다...
+                  </Text>
+                  <Text style={stylesContent2.text3}>
+                    콘텐츠 내용의 일부입니다. 사용자들의 관심을 유도하기 위해
+                    내용의 일부를 노출합니다.
+                  </Text>
+                </View>
               </View>
             </View>
           </View>
-          <Text style={stylesContent2.text}>
-            내 잘못으로 친구가 화가 났을 때
-          </Text>
-          <View style={stylesContent2.box}>
-            <View style={stylesContent2.boxinner}>
-              <View style={stylesContent2.boxleft}>
-                <Image source={require('../assets/pngs/home_heart.png')} />
-                <Text style={stylesContent2.text2}>현</Text>
-              </View>
-              <View style={stylesContent2.boxright}>
-                <Text style={stylesContent2.text2}>
-                  지각이 잦은 나, 오늘도 늦었다면?
-                </Text>
-                <Text style={stylesContent2.text3}>
-                  콘텐츠 내용의 일부입니다. 사용자들의 관심을 유도하기 위해
-                  내용의 일부를 노출합니다.
-                </Text>
-              </View>
-            </View>
-            <View style={stylesContent2.boxinner}>
-              <View style={stylesContent2.boxleft}>
-                <Image source={require('../assets/pngs/home_heart.png')} />
-                <Text style={stylesContent2.text2}>제이</Text>
-              </View>
-              <View style={stylesContent2.boxright}>
-                <Text style={stylesContent2.text2}>
-                  친구한테 빌린 태블릿을 떨어뜨렸다...
-                </Text>
-                <Text style={stylesContent2.text3}>
-                  콘텐츠 내용의 일부입니다. 사용자들의 관심을 유도하기 위해
-                  내용의 일부를 노출합니다.
-                </Text>
-              </View>
-            </View>
-          </View>
         </View>
-      </View>
-    </SafeAreaView>
+      </SafeAreaView>
+      {isModalOpen && <Modal handleClose={setIsModalOpen} />}
+    </>
   );
 };
 
