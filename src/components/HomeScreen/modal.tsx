@@ -13,9 +13,10 @@ import SquareButton from '../common/UI/SquareButton';
 
 interface Props {
   handleClose: Dispatch<SetStateAction<boolean>>;
+  setChange: Dispatch<SetStateAction<boolean>>;
 }
 
-const Modal = ({handleClose}: Props) => {
+const Modal = ({handleClose, setChange}: Props) => {
   const handleCloseModal = (event: GestureResponderEvent) => {
     handleClose(false);
   };
@@ -28,7 +29,10 @@ const Modal = ({handleClose}: Props) => {
         <View style={styles.box}>
           <Text style={{paddingHorizontal: 10}}>2023년 01월 08일</Text>
         </View>
-        <SquareButton text="결심하기" />
+        <SquareButton text="결심하기" onPress={(e: any)=> {
+          handleCloseModal(e)
+          setChange(false);
+        }}/>
       </View>
     </Pressable>
   );

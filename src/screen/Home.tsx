@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Alert, Image, Pressable, StyleSheet, Text, View} from 'react-native';
 // import { CheckBoxBase } from "@react-native-community/checkbox";
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
+
 import {SafeAreaView} from 'react-native-safe-area-context';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -10,8 +11,9 @@ import {Mail, Quote, Quote2} from '../assets/svgs';
 import Modal from '../components/HomeScreen/modal';
 import Colors from '../constants/Colors';
 
-const Home = () => {
+const Home = ({navigation}: any) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [change, setChange] = useState(true);
 
   return (
     <>
@@ -29,12 +31,23 @@ const Home = () => {
         <Text style={styles.text2}>화해할 결심</Text>
         <Pressable
           onPress={() => {
-            setIsModalOpen(true);
+            if (change)
+              setIsModalOpen(true);
+            else {
+              navigation.navigate("화해하자");
+            }
           }}>
           <View style={styles.card}>
-            <Quote style={{marginBottom: 16}} />
-            <Mail style={{marginBottom: 16}} />
-            <Quote2 />
+            {change?
+              <>
+                <Quote style={{marginBottom: 16}} />
+                <Mail style={{marginBottom: 16}} />
+                <Quote2 />
+              </>:
+              <Pressable onPress={()=>{}}>
+                <Image source={require('../assets/pngs/home_main.png')} />
+              </Pressable>
+            }
           </View>
         </Pressable>
         <View style={styles.content}>
@@ -113,7 +126,7 @@ const Home = () => {
           </View>
         </View>
       </SafeAreaView>
-      {isModalOpen && <Modal handleClose={setIsModalOpen} />}
+      {isModalOpen && <Modal handleClose={setIsModalOpen} setChange={setChange} />}
     </>
   );
 };
