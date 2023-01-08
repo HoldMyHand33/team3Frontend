@@ -1,12 +1,20 @@
 import React, { useState } from "react";
 import { Alert, Pressable, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { TextInput } from "react-native-paper";
 
 const Daily2 = () => {
 
   return (
       <>
         <Text style={stylesContent2.text2}>브라운</Text>
-        <TouchableOpacity style={stylesContent1.box2}></TouchableOpacity>
+        <TextInput
+          style={stylesContent1.box2}
+          // style={[styles.input, {marginBottom: 17}]}
+        //   onChangeText={setPassword}
+        //   value={password}
+        //   secureTextEntry={true}ddd
+          placeholder=""
+        />
       </>
   );
 };

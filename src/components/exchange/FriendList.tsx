@@ -4,19 +4,23 @@ import Modal2 from "./Modal2";
 
 const FriendList = ({ setTF, setIsModalOpen2 }: any) => {
     const [myCode, setMyCode] = useState("k3du10");
+    const [user, setUser] = useState(false);
 
   return (
       <>
         <Text style={stylesContent1.text}>친구 목록</Text>
         <View style={stylesContent1.box}>
+            {user&&            
+              <View style={stylesContent1.box2}>
+                  <Image source={require('../../assets/pngs/home_heart.png')} />
+                  <Text style={stylesContent2.text}>현</Text>
+                  <Text style={stylesContent2.button}>신청하기</Text>
+              </View>
+            }
             <View style={stylesContent1.box2}>
                 <Image source={require('../../assets/pngs/home_heart.png')} />
                 <Text style={stylesContent2.text}>지미</Text>
-                <Text style={stylesContent2.button}                   
-                onPress={()=>{
-                    setIsModalOpen2(true); 
-                    // setTF(false);  
-                  }}>신청하기</Text>
+                <Text style={stylesContent2.button}>신청하기</Text>
             </View>
             <View style={stylesContent1.box2}>
                 <Image source={require('../../assets/pngs/home_heart.png')} />
@@ -36,7 +40,12 @@ const FriendList = ({ setTF, setIsModalOpen2 }: any) => {
                 나의 코드 {myCode}&nbsp;&nbsp;&nbsp;&nbsp;
                 <Text style={stylesContent1.copy}>복사하기</Text>
             </Text>
-            <Text style={stylesContent1.button}>친구 추가하기</Text>
+            <Text style={stylesContent1.button}                
+              onPress={()=>{
+              setIsModalOpen2(true); 
+              // setTF(false);  
+              setUser(true);
+            }}>친구 추가하기</Text>
         </View>
       </>
   );

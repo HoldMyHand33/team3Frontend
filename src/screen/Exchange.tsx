@@ -70,7 +70,9 @@ const Exchange = () => {
                     <Daily2 />
                     <Pressable 
                         style={styles.footer}
-                        onPress={()=>{ }}>
+                        onPress={()=>{ 
+                          setTF2(true);
+                        }}>
                         <View style={styles.button}>
                             <Text style={styles.text}>저장하기</Text>
                         </View>
