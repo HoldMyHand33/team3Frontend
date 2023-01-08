@@ -19,7 +19,7 @@ interface Props {
   setIsLoggedIn: Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Modal2 = ({setTF, setIsModalOpen2}: any) => {
+const Modal2 = ({setTF, setIsModalOpen2, setUser}: any) => {
 
   return (
     <Pressable style={styles.container} >
@@ -37,6 +37,7 @@ const Modal2 = ({setTF, setIsModalOpen2}: any) => {
             style={styles.footer}
             onPress={()=>{ 
                 // setTF(false); 
+                setUser(true);
                 setIsModalOpen2(false); 
             }}>
             <View style={styles.button}>

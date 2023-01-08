@@ -28,6 +28,7 @@ const Exchange = () => {
     ]);
 
     const [isModalOpen2, setIsModalOpen2] = useState(false);
+    const [user, setUser] = useState(false);
 
   return (
     <>
@@ -48,7 +49,7 @@ const Exchange = () => {
                 <View style={styles.content}>
                     <Text style={stylesContent1.text}>교환하자</Text>
                     <Text style={stylesContent1.text2}>화해한 친구와 7일간의 교환 일기로 서로를 이해하고 어색함을 풀어요.</Text>
-                    <FriendList setTF={setTF} setIsModalOpen2={setIsModalOpen2} />
+                    <FriendList user={user} setTF={setTF} setIsModalOpen2={setIsModalOpen2} />
                 </View>:
                 <View style={styles.content}>
                     <Text style={stylesContent1.text}>교환하자</Text>
@@ -84,7 +85,7 @@ const Exchange = () => {
       <Text style={{ fontSize: 22, }} onPress={()=>{ if (date < 7) setDate(date+1) }}>&nbsp;</Text>
       </SafeAreaView>
       {isModalOpen2 && (
-        <Modal2 setTF={setTF} setIsModalOpen2={setIsModalOpen2} />
+        <Modal2 setTF={setTF} setIsModalOpen2={setIsModalOpen2} setUser={setUser} />
       )}
     </>
   );

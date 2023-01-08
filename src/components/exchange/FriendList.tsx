@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Alert, Pressable, StyleSheet, Text, View, Image } from 'react-native';
 import Modal2 from "./Modal2";
 
-const FriendList = ({ setTF, setIsModalOpen2 }: any) => {
+const FriendList = ({ user, setTF, setIsModalOpen2 }: any) => {
     const [myCode, setMyCode] = useState("k3du10");
-    const [user, setUser] = useState(false);
+
 
   return (
       <>
@@ -44,7 +44,6 @@ const FriendList = ({ setTF, setIsModalOpen2 }: any) => {
               onPress={()=>{
               setIsModalOpen2(true); 
               // setTF(false);  
-              setUser(true);
             }}>친구 추가하기</Text>
         </View>
       </>
