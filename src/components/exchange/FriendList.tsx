@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Alert, Pressable, StyleSheet, Text, View, Image } from 'react-native';
+import Modal2 from "./Modal2";
 
-const FriendList = ({ setTF }: any) => {
+const FriendList = ({ setTF, setIsModalOpen2 }: any) => {
     const [myCode, setMyCode] = useState("k3du10");
 
   return (
@@ -18,7 +19,10 @@ const FriendList = ({ setTF }: any) => {
                 <Text style={stylesContent2.text}>지미</Text>
                 <Text 
                   style={[stylesContent2.button, stylesContent2.button2]}
-                  onPress={()=>{ setTF(false) }}>
+                  onPress={()=>{
+                    setIsModalOpen2(true); 
+                    // setTF(false);  
+                  }}>
                     수락하기
                 </Text>
             </View>

@@ -8,6 +8,7 @@ import FriendList from "../components/exchange/FriendList";
 
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Modal2 from "../components/exchange/Modal2";
 
 const Exchange = () => {
     const [myCode, setMyCode] = useState("k3du10");
@@ -26,41 +27,44 @@ const Exchange = () => {
         '앞으로의 다짐 및 서로와의 약속을 적어주세요.',
     ]);
 
+    const [isModalOpen2, setIsModalOpen2] = useState(false);
+
   return (
-    <SafeAreaView style={styles.screen}>
-      <View style={styles.header}>
-        <Text style={styles.title}>
-            내 손을&nbsp;
-            <Text style={{ fontSize: 22, fontWeight: '900', }}>자바</Text>
-        </Text>
-        <View style={styles.headerright}>
-          <EvilIcons name="bell" size={30} style={{ marginRight: 7, }}/>
-          <FontAwesome name="user-circle" size={22}/>
+    <>
+      <SafeAreaView style={styles.screen}>
+        <View style={styles.header}>
+          <Text style={styles.title}>
+              내 손을&nbsp;
+              <Text style={{ fontSize: 22, fontWeight: '900', }}>자바</Text>
+          </Text>
+          <View style={styles.headerright}>
+            <EvilIcons name="bell" size={30} style={{ marginRight: 7, }}/>
+            <FontAwesome name="user-circle" size={22}/>
+          </View>
         </View>
-      </View>
-      {tf2?
-        <>
-            {tf?
+        {tf2?
+          <>
+              {tf?
                 <View style={styles.content}>
                     <Text style={stylesContent1.text}>교환하자</Text>
                     <Text style={stylesContent1.text2}>화해한 친구와 7일간의 교환 일기로 서로를 이해하고 어색함을 풀어요.</Text>
-                    <FriendList setTF={setTF} />
+                    <FriendList setTF={setTF} setIsModalOpen2={setIsModalOpen2} />
                 </View>:
                 <View style={styles.content}>
                     <Text style={stylesContent1.text}>교환하자</Text>
                     <Text style={stylesContent1.text2}>화해한 친구와 7일간의 교환 일기로 서로를 이해하고 어색함을 풀어요.</Text>
                     <DailyList setTF={setTF} setTF2={setTF2} date={date} dateContent={dateContent} />
                 </View>
-            }
-        </>:
-        <View style={styles.content}>
-            {tf3?
-                <>
+              }
+          </>:
+          <View style={styles.content}>
+              {tf3?
+                  <>
                     <Text style={stylesContent1.text}><Text onPress={() => { setTF2(true); setTF(false); }}>&lt;</Text>&nbsp;교환 일기</Text>
                     <Text style={stylesContent1.text2}>화해한 친구와 7일간의 교환 일기로 서로를 이해하고 어색함을 풀어요.</Text>
                     <Daily setTF3={setTF3} />
-                </>:
-                <>
+                  </>:
+                  <>
                     <Text style={stylesContent1.text}><Text onPress={() => { setTF3(true) }}>&lt;</Text>&nbsp;교환 일기</Text>
                     <Text style={stylesContent1.text2}>화해한 친구와 7일간의 교환 일기로 서로를 이해하고 어색함을 풀어요.</Text>
                     <Daily2 />
@@ -71,11 +75,16 @@ const Exchange = () => {
                             <Text style={styles.text}>저장하기</Text>
                         </View>
                     </Pressable>
-                </>
-            }
-        </View>
-      }
-    </SafeAreaView>
+                  </>
+              }
+          </View>
+        }
+      <Text style={{ fontSize: 22, }} onPress={()=>{ if (date < 7) setDate(date+1) }}>&nbsp;</Text>
+      </SafeAreaView>
+      {isModalOpen2 && (
+        <Modal2 setTF={setTF} setIsModalOpen2={setIsModalOpen2} />
+      )}
+    </>
   );
 };
 
@@ -187,6 +196,15 @@ const stylesContent1 = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: '#FF4D4D',
   },
+
+  // last: {
+  //   flex: 1,
+  //   margin: 15,
+  //   marginBottom: 30,
+
+  //   flexDirection:'row',
+  //   alignItems:'flex-end',
+  // },
 })
 
 const stylesContent2 = StyleSheet.create({

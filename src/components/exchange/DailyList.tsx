@@ -27,6 +27,7 @@ const DailyList = ({ setTF, setTF2, date, dateContent }: any) => {
                 )
             );
         })}
+
       </>
   );
 };
@@ -62,6 +63,7 @@ const stylesContent1 = StyleSheet.create({
   },
   text4: {
     color: '#FF9090',
+    marginBottom: 10,
   },
   text5: {
     color: '#000',
@@ -78,6 +80,15 @@ const stylesContent1 = StyleSheet.create({
 
     borderRadius: 7,
     backgroundColor: '#FF9090',
+  },
+
+  last: {
+    flex: 1,
+    margin: 15,
+    marginBottom: 30,
+
+    flexDirection:'row',
+    alignItems:'flex-end',
   },
 })
 

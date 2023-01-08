@@ -6,12 +6,18 @@ const Daily = ({ setTF3 }: any) => {
   return (
       <>
         <Text style={stylesContent2.text2}>아크</Text>
-        <View style={stylesContent1.box2}></View>
+        <View style={stylesContent1.box2}>
+          <Text style={{ textAlign: 'center', lineHeight: 130, }}>
+            아직 친구가 오늘의 교환 일기를 작성하지 않았어요.
+          </Text>
+        </View>
         <Text style={stylesContent2.text2}>브라운</Text>
         <TouchableOpacity
             style={stylesContent1.box2} 
             onPress={()=>{ setTF3(false) }}>
-    
+          <Text style={{ textAlign: 'center', lineHeight: 130, }}>
+            눌러서 오늘의 교환 일기를 작성해주세요.
+          </Text>
         </TouchableOpacity>
       </>
   );
