@@ -16,7 +16,7 @@ const Home = () => {
       <View style={styles.header}>
         <Text style={styles.title}>
           내 손을&nbsp;
-          <Text style={{fontSize: 22, fontWeight: '900'}}>자바</Text>
+          <Text style={{fontSize: 22, fontWeight: '900', fontFamily: '210namuR', }}>자바</Text>
         </Text>
         <View style={styles.headerright}>
           <EvilIcons name="bell" size={30} style={{ marginRight: 7, }}/>
@@ -118,6 +118,7 @@ const styles = StyleSheet.create({
     height: 45,
     justifyContent: 'center',
     width: '100%',
+    fontFamily: '210namuR',
   },
   card: {
     alignItems: 'center',
@@ -164,12 +165,14 @@ const styles = StyleSheet.create({
 
   text: {
     color: 'white',
+    fontFamily: '210namuR',
     fontSize: 16,
   },
-  text2: {color: Colors.BLACK, marginBottom: 15, marginLeft: 15},
+  text2: {color: Colors.BLACK, marginBottom: 15, marginLeft: 15,     fontFamily: '210namuR',},
   title: {
     fontSize: 18,
     fontWeight: '400',
+    fontFamily: '210namuR',
   },
 });
 
