@@ -35,7 +35,10 @@ const Modal2 = ({setTF, setIsModalOpen2}: any) => {
         />
         <Pressable 
             style={styles.footer}
-            onPress={()=>{ setTF(false); setIsModalOpen2(false); }}>
+            onPress={()=>{ 
+                // setTF(false); 
+                setIsModalOpen2(false); 
+            }}>
             <View style={styles.button}>
                 <Text style={styles.text3}>저장하기</Text>
             </View>

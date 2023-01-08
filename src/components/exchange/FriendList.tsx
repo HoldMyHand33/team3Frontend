@@ -12,16 +12,20 @@ const FriendList = ({ setTF, setIsModalOpen2 }: any) => {
             <View style={stylesContent1.box2}>
                 <Image source={require('../../assets/pngs/home_heart.png')} />
                 <Text style={stylesContent2.text}>지미</Text>
-                <Text style={stylesContent2.button}>신청하기</Text>
+                <Text style={stylesContent2.button}                   
+                onPress={()=>{
+                    setIsModalOpen2(true); 
+                    // setTF(false);  
+                  }}>신청하기</Text>
             </View>
             <View style={stylesContent1.box2}>
                 <Image source={require('../../assets/pngs/home_heart.png')} />
-                <Text style={stylesContent2.text}>지미</Text>
+                <Text style={stylesContent2.text}>아크</Text>
                 <Text 
                   style={[stylesContent2.button, stylesContent2.button2]}
                   onPress={()=>{
-                    setIsModalOpen2(true); 
-                    // setTF(false);  
+                    // setIsModalOpen2(true); 
+                    setTF(false);  
                   }}>
                     수락하기
                 </Text>
